@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Follow these commands to get set up to the repository:
  
   -git init
@@ -31,7 +31,6 @@ Follow these commands to get set up to the repository:
   - Go onto github account and merge, or notify someone in the group to review
   - Once the new changes have been merged go back to master(git checkout master)
   - Then repeat process for next set. 
-=======
 # Software-Engineering
 
 
@@ -42,4 +41,4 @@ Follow these commands to get set up to the repository:
   /  /_\  \       \   \      /  /_\  \          \   \      \            / /  /_\  \   |  . `  | 
  /  _____  \  .----)   |    /  _____  \     .----)   |      \    /\    / /  _____  \  |  |\   | 
 /__/     \__\ |_______/    /__/     \__\    |_______/        \__/  \__/ /__/     \__\ |__| \__| 
->>>>>>> 9f5d6d251aa0f67724abe35b4aad591e9098142f
+
