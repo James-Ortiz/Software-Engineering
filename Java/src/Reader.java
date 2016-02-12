@@ -3,8 +3,6 @@
  */
 
 import com.opencsv.CSVReader;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +58,12 @@ public class Reader {
 
                 flights.add(new Flight(attributes));
                 numRecords++;
-                int j = 1;
+//                System.out.println(flights.get(numRecords -1).getRequestedValue("#AC_NUM"));//for testing purposes
+//
+//                if(numRecords > 9){//just for testing
+//                    break;
+//                }
+
             }
 
         } catch (Exception e) {
