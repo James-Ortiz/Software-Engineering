@@ -37,7 +37,7 @@ Follow these commands to get set up to the repository:
 
 - https://help.github.com/articles/generating-a-new-ssh-key/    
 (setup you ssh key allowing access)
-
+---------------qwertyuiop
      ___           _______.     ___              _______.____    __    ____  ___      .__   __. 
     /   \         /       |    /   \            /       |\   \  /  \  /   / /   \     |  \ |  | 
    /  ^  \       |   (----`   /  ^  \          |   (----` \   \/    \/   / /  ^  \    |   \|  | 
