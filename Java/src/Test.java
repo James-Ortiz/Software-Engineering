@@ -4,6 +4,6 @@
 public class Test {
 
     public static void main(String[] args) {
-        System.out.println("Test Worked Again");
+        System.out.println("Test Worked");
     }
 }
