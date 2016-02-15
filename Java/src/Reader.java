@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Reader {
 
-    private ArrayList<String> columns;
+   private ArrayList<String> columns;
     private CSVReader reader;
     private ArrayList<Flight> flights;
     private int numRecords = 0; //keep track of how many records (flights) we have.
