@@ -18,6 +18,8 @@ public class Metrics {
     private String airNum;
     private String ACID;
     private String track;
+    private int start;
+    private int end;
     public Metrics(){
         
     }
@@ -74,19 +76,91 @@ System.out.println(flightMap.get(airNum));
         return ACID;
     }
     
+    public int getStartTime(int getStart){
+        Reader r = new Reader();
+        start = Integer.parseInt( (String) r.getFlights().get(getStart).getRequestedValue("ST_TIME"));
+        return start;
+        
+    }
+    
+    public int getEndTime(int getEnd){
+        Reader r = new Reader();
+        end =  Integer.parseInt((String) r.getFlights().get(getEnd).getRequestedValue("END_TIME"));
+        return end;
+    }
+    
+    public void startCoversion(){
+        
+        int temp = start;
+        int seconds = 0;
+        int minutes = 0;
+        int hours = 0;
+       hours = temp / 3600;
+       minutes = temp / 60;
+       minutes = minutes % 60;
+       seconds = temp % 60;
+        System.out.println("Start time: " + hours + ":" + minutes + ":" + seconds);
+    }
+    
+    public void endCoversion(){
+        int temp = end;
+        int seconds = 0;
+        int minutes = 0;
+        int hours = 0;
+       hours = temp / 3600;
+       minutes = temp / 60;
+       minutes = minutes % 60;
+       seconds = temp % 60;
+       System.out.println("End time: " + hours + ":" + minutes + ":" + seconds);
+    }
+    
+    /**
+     * This method calculates the flight duration and prints it out into hh:mm:ss
+     * format
+     */
+    public void flightDuration(){
+        Metrics m = new Metrics();
+        int duration = end - start;
+        int temp = duration;
+        int seconds = 0;
+        int minutes = 0;
+        int hours = 0;
+        hours = temp / 3600;
+        minutes = temp / 60;
+        minutes = minutes % 60;
+        seconds = temp % 60;
+       System.out.println("Flight duration: " + hours + ":" + minutes + ":" + seconds);
+        
+    }
+    
     /**
      * Just prints out the first five rows, and only the ac_num, track_cnt, and acid
      * in the .csv to test the output
      * @param args 
      */
     public static void main(String args[]){
+        try{
         Metrics m = new Metrics();
         for(int i =0; i < 5; i++){
             m.getAircraftNum(i);
             m.track(i);
             m.getACID(i);
             m.singleFlight(i);
+            m.getStartTime(i);
+            m.getEndTime(i);
+            m.startCoversion();
+            m.endCoversion();
+            m.flightDuration();
+            
+            
         }
+       
+        
 
     }
+       catch (Exception e){
+    e.printStackTrace();
+}
+    }
+    
 }
