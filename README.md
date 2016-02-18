@@ -1,7 +1,6 @@
+"# Software-Engineering"
 
 Follow these commands to get set up to the repository:
- 
-  -git init
 
   -git remote add origin git@github.com:James-Ortiz/Software-Engineering.git 
    
@@ -33,8 +32,12 @@ Follow these commands to get set up to the repository:
   - Then repeat process for next set. 
 # Software-Engineering
 
+- https://help.github.com/articles/set-up-git/
+(setup your config)
 
-
+- https://help.github.com/articles/generating-a-new-ssh-key/    
+(setup you ssh key allowing access)
+---------------qqqqqq
      ___           _______.     ___              _______.____    __    ____  ___      .__   __. 
     /   \         /       |    /   \            /       |\   \  /  \  /   / /   \     |  \ |  | 
    /  ^  \       |   (----`   /  ^  \          |   (----` \   \/    \/   / /  ^  \    |   \|  | 
