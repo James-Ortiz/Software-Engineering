@@ -33,7 +33,7 @@ public class Reader {
     public void create_and_read_input(){
 
         try {
-            CSVReader reader = new CSVReader(new FileReader("C:\\Users\\HansYolo\\Desktop\\AC_LISTRPS0818DCR.csv")); // .csv file location
+            CSVReader reader = new CSVReader(new FileReader("C:\\Users\\Stanimir\\Documents\\GitHub\\Java\\AC_LISTRPS0818DCR.csv")); // .csv file location
 
             //the first row of the .csv will be the column titles, so let's put those into an ArrayList
             int numColumns;
@@ -43,7 +43,7 @@ public class Reader {
             numColumns = nextLine.length-1;
             for(int i = 0; i <= numColumns; i++){
                 columns.add(nextLine[i]);
-                System.out.println(nextLine[i]);
+                //System.out.println(nextLine[i]);
 
             }
 

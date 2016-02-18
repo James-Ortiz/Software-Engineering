@@ -15,11 +15,11 @@ public class GUI extends JFrame {
 	private JLabel average;
     private JTable maintable;
     private TableColumn cityColumn, arivalColumn, departureColumn, overflighColumn;
-    private Metrics generator; // use to get average flight times, and values for arivals departures and overflighs
+    private Metrics generator = new Metrics(); // use to get average flight times, and values for arivals departures and overflighs
 	private JButton selectMetric, selectCity;
 	private JComboBox metricList, cityList;
 	private String[] metrics = {"Average flight time", "City Operations"};
-	private String[] cities = {"PHL", "BOS"};
+	private String[] cities = {"PHL", "JFK"};
 	
     public GUI(){
 		createUserInterface();
@@ -34,7 +34,7 @@ public class GUI extends JFrame {
 		contentPane.add(metricList);
 		
 		average = new JLabel();
-		average.setText(/*average from Metrics class*/"200 minutes"+" Average flight time");
+		average.setText(generator.calulateAverage()+" Average flight time");
 		average.setBounds(180, 30, 200, 20);
 		average.setVisible(false);
 		contentPane.add(average);
@@ -63,14 +63,13 @@ public class GUI extends JFrame {
 				}
 		);
 		
-		maintable = new JTable(2,4);
-		maintable.setBounds(180, 20, 300, 80);
+		maintable = new JTable(2,3);
+		maintable.setBounds(180, 20, 225, 80);
 		maintable.setRowHeight(40);
 		maintable.setVisible(false);
 		maintable.setEnabled(false);
 		maintable.setValueAt("Arrivals", 0, 1);
 		maintable.setValueAt("Departures", 0, 2);
-		maintable.setValueAt("Overflights", 0, 3);
 		contentPane.add(maintable);
 		
 		cityList = new JComboBox(cities);
@@ -90,15 +89,13 @@ public class GUI extends JFrame {
 						int selection = cityList.getSelectedIndex();
 						if(selection==0){
 							maintable.setValueAt("PHL", 1, 0);
-							maintable.setValueAt(""/*get total arrivals for this airport*/, 1, 1);
-							maintable.setValueAt(""/*get total departures for this airport*/, 1, 2);
-							maintable.setValueAt(""/*get total overflights for this airport*/, 1, 3);
+							maintable.setValueAt(generator.getArrivals("PHL"), 1, 1);
+							maintable.setValueAt(generator.getDepartures("PHL"), 1, 2);
 						}
 						else if(selection==1){
-							maintable.setValueAt("BOS", 1, 0);
-							maintable.setValueAt(""/*get total arrivals for this airport*/, 1, 1);
-							maintable.setValueAt(""/*get total departures for this airport*/, 1, 2);
-							maintable.setValueAt(""/*get total overflights for this airport*/, 1, 3);
+							maintable.setValueAt("JFK", 1, 0);
+							maintable.setValueAt(generator.getArrivals("JFK"), 1, 1);
+							maintable.setValueAt(generator.getDepartures("JFK"), 1, 2);
 						}
 					}
 				}

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package software_engineering;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -20,24 +19,23 @@ public class Metrics {
     private String track;
     private int start;
     private int end;
+    private int flights=50;
+    private Reader r = new Reader();
+
     public Metrics(){
         
     }
     
     public void singleFlight(int counter){
         Metrics m= new Metrics();
-//  Reader r = new Reader();
-//        int ac_num=0;
- Map<String, ArrayList<String>> flightMap = new HashMap<String, ArrayList<String>>();
- ArrayList<String> myArray = new ArrayList<String>();
- myArray.add(m.track(counter));
- myArray.add(m.getACID(counter));
+//      Reader r = new Reader();
+//      int ac_num=0;
+        Map<String, ArrayList<String>> flightMap = new HashMap<String, ArrayList<String>>();
+        ArrayList<String> myArray = new ArrayList<String>();
+        myArray.add(m.track(counter));
+        myArray.add(m.getACID(counter));
  
- flightMap.put(airNum, myArray);
-
-
-System.out.print("Aircraft number: " + airNum + " ");
-System.out.println(flightMap.get(airNum));
+        flightMap.put(airNum, myArray);
     }
     
     /**
@@ -46,8 +44,7 @@ System.out.println(flightMap.get(airNum));
      * @return airID
      */
     public String getAircraftNum(int getID){
-        
-        Reader r = new Reader();
+
         airNum = (String) r.getFlights().get(getID).getRequestedValue("#AC_NUM");
         return airNum;
     }
@@ -58,8 +55,7 @@ System.out.println(flightMap.get(airNum));
      * @return track
      */
     public String track(int getTrack){
-        
-        Reader r = new Reader();
+
         track = (String) r.getFlights().get(getTrack).getRequestedValue("TRACK_CNT");
         return track;
     }
@@ -70,97 +66,74 @@ System.out.println(flightMap.get(airNum));
      * @return ACID
      */
     public String getACID(int getACID){
-        
-        Reader r = new Reader();
+
         ACID = (String) r.getFlights().get(getACID).getRequestedValue("ACID");
         return ACID;
     }
     
     public int getStartTime(int getStart){
-        Reader r = new Reader();
+
         start = Integer.parseInt( (String) r.getFlights().get(getStart).getRequestedValue("ST_TIME"));
         return start;
         
     }
     
     public int getEndTime(int getEnd){
-        Reader r = new Reader();
+
         end =  Integer.parseInt((String) r.getFlights().get(getEnd).getRequestedValue("END_TIME"));
         return end;
     }
-    
-    public void startCoversion(){
-        
-        int temp = start;
-        int seconds = 0;
-        int minutes = 0;
-        int hours = 0;
-       hours = temp / 3600;
-       minutes = temp / 60;
-       minutes = minutes % 60;
-       seconds = temp % 60;
-        System.out.println("Start time: " + hours + ":" + minutes + ":" + seconds);
+
+    public int getArrivals(String city){
+        int arrivals=0;
+        for(int i=0;i<flights;i++){
+             if(city.equals((String) r.getFlights().get(i).getRequestedValue("ORIGIN_FIX")))
+                arrivals++;
+        }
+        return arrivals;
     }
-    
-    public void endCoversion(){
-        int temp = end;
-        int seconds = 0;
-        int minutes = 0;
-        int hours = 0;
-       hours = temp / 3600;
-       minutes = temp / 60;
-       minutes = minutes % 60;
-       seconds = temp % 60;
-       System.out.println("End time: " + hours + ":" + minutes + ":" + seconds);
+
+    public int getDepartures(String city){
+        int departures=0;
+        for(int i=0;i<flights;i++){
+            if(city.equals((String) r.getFlights().get(i).getRequestedValue("DEST_FIX")))
+                departures++;
+        }
+        return departures;
     }
-    
+
     /**
      * This method calculates the flight duration and prints it out into hh:mm:ss
      * format
      */
-    public void flightDuration(){
+    public int flightDuration(){
         Metrics m = new Metrics();
         int duration = end - start;
-        int temp = duration;
-        int seconds = 0;
-        int minutes = 0;
-        int hours = 0;
-        hours = temp / 3600;
-        minutes = temp / 60;
-        minutes = minutes % 60;
-        seconds = temp % 60;
-       System.out.println("Flight duration: " + hours + ":" + minutes + ":" + seconds);
-        
+        return duration;
     }
-    
+
+    public int calulateAverage(){
+        int average=0;
+
+        for(int i =0; i < flights; i++){
+            getAircraftNum(i);
+            track(i);
+            singleFlight(i);
+            getStartTime(i);
+            getEndTime(i);
+
+            average+=flightDuration();
+
+
+        }
+        average/=flights;
+        return average;
+    }
+
     /**
      * Just prints out the first five rows, and only the ac_num, track_cnt, and acid
      * in the .csv to test the output
      * @param args 
      */
-    public static void main(String args[]){
-        try{
-        Metrics m = new Metrics();
-        for(int i =0; i < 5; i++){
-            m.getAircraftNum(i);
-            m.track(i);
-            m.getACID(i);
-            m.singleFlight(i);
-            m.getStartTime(i);
-            m.getEndTime(i);
-            m.startCoversion();
-            m.endCoversion();
-            m.flightDuration();
-            
-            
-        }
-       
-        
-
-    }
-       catch (Exception e){
-    e.printStackTrace();
-}
-    }
     
 }
