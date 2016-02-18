@@ -3,7 +3,7 @@ import java.util.HashMap;
 /**
  * Created by HansYolo on 2/12/2016.
  * Added something else.
- * Added more
+ * Added more stuff
  */
 public class Flight {
 
