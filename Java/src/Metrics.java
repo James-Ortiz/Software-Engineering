@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package software_engineering;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.Iterator;
 
 /**
  *
- * @author Danielle
+ * @author Danielle.
  */
 public class Metrics {
     private String airNum;
